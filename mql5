@@ -1,0 +1,132 @@
+mql5
+//+------------------------------------------------------------------+
+//|                  Elliott Surfer EA MT5                            |
+//|            Developer's Site: forexroboteasy.com                  |
+//|              Development by: Forex Robot Easy Team               |
+//+------------------------------------------------------------------+
+
+// Define input parameters
+input double lotSize = 0.01;              // Initial lot size for trading
+input double riskPercentage = 2;          // Risk percentage per trade
+input double stopLossPips = 50;           // Stop loss in pips
+input double takeProfitPips = 100;        // Take profit in pips
+input int maxTrades = 5;                  // Maximum number of trades
+
+// Define global variables
+int tradeCount = 0;                       // Number of trades taken
+bool tradeOpen = false;                   // Flag to indicate if a trade is open
+
+//+------------------------------------------------------------------+
+//|                     Expert Advisor Start Function                |
+//+------------------------------------------------------------------+
+void OnTick()
+{
+    // Check if a trade is open
+    if (tradeOpen)
+    {
+        // Check if trade reached take profit level
+        if (CheckTakeProfit())
+        {
+            CloseTrade();
+        }
+        // Check if trade reached stop loss level
+        else if (CheckStopLoss())
+        {
+            CloseTrade();
+        }
+    }
+    else
+    {
+        // Check for entry points on corrective waves
+        if (CheckEntry())
+        {
+            OpenTrade();
+        }
+    }
+}
+
+//+------------------------------------------------------------------+
+//|                 Check Entry Points on Corrective Waves           |
+//+------------------------------------------------------------------+
+bool CheckEntry()
+{
+    // Add logic to identify and analyze Elliott Waves
+    // ...
+
+    // Add logic to determine entry points on corrective waves
+    // ...
+
+    // Return true if entry point is found, else false
+    return false;
+}
+
+//+------------------------------------------------------------------+
+//|                     Open a New Trade                              |
+//+------------------------------------------------------------------+
+void OpenTrade()
+{
+    // Check if maximum number of trades is reached
+    if (tradeCount >= maxTrades)
+    {
+        return;
+    }
+    
+    // Add logic to calculate position size based on risk percentage
+    double positionSize = CalculatePositionSize();
+    
+    // Add logic to open a new trade
+    // ...
+    
+    // Update trade count and trade open flag
+    tradeCount++;
+    tradeOpen = true;
+}
+
+//+------------------------------------------------------------------+
+//|                     Close an Open Trade                           |
+//+------------------------------------------------------------------+
+void CloseTrade()
+{
+    // Add logic to close the open trade
+    // ...
+    
+    // Reset trade count and trade open flag
+    tradeCount = 0;
+    tradeOpen = false;
+}
+
+//+------------------------------------------------------------------+
+//|                   Check Take Profit Level                         |
+//+------------------------------------------------------------------+
+bool CheckTakeProfit()
+{
+    // Add logic to check if trade reached take profit level
+    // ...
+    
+    // Return true if take profit is hit, else false
+    return false;
+}
+
+//+------------------------------------------------------------------+
+//|                   Check Stop Loss Level                           |
+//+------------------------------------------------------------------+
+bool CheckStopLoss()
+{
+    // Add logic to check if trade reached stop loss level
+    // ...
+    
+    // Return true if stop loss is hit, else false
+    return false;
+}
+
+//+------------------------------------------------------------------+
+//|              Calculate Position Size based on Risk                |
+//+------------------------------------------------------------------+
+double CalculatePositionSize()
+{
+    // Add logic to calculate position size based on risk percentage
+    // ...
+    
+    // Return calculated position size
+    return lotSize;
+}
